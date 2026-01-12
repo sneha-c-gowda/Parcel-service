@@ -22,12 +22,10 @@ pipeline {
       stage ("deploy") {
       steps {
         sh '''
-        sudo apt update
-        sudo apt install -y maven
         export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
         export PATH=$JAVA_HOME/bin:$PATH
         mvn clean install
-        mvn spring-boot:run
+        java -jar target/*.jar &
         '''
       }
     }

@@ -5,7 +5,7 @@ pipeline {
     stage ("checkout") {
       steps {
         sh '''
-        rm -rf *
+        rm -rf Parcel-service
         git clone https://github.com/sneha-c-gowda/Parcel-service.git
         ls 
         pwd
@@ -13,4 +13,5 @@ pipeline {
       }
     }
   }
+}
   

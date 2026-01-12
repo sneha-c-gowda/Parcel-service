@@ -25,7 +25,7 @@ pipeline {
         export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
         export PATH=$JAVA_HOME/bin:$PATH
         mvn clean install
-        nohup mvn spring-boot:run &
+        nohup java -jar target/*.jar > app.log 2>&1 &
         '''
       }
     }

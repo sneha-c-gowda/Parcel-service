@@ -25,9 +25,9 @@ pipeline {
         sudo apt update
         sudo apt install -y maven
         export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-        echo $JAVA_HOME
         export PATH=$JAVA_HOME/bin:$PATH
-        echo $PATH
+        mvn clean install
+        mvn spring-boot:run
         '''
       }
     }

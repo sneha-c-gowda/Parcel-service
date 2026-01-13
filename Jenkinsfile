@@ -13,6 +13,8 @@ pipeline {
       stage ("build") {
       steps {
         sh '''
+        sudo apt update
+        sudo apt install -y maven
         export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
         export PATH=$JAVA_HOME/bin:$PATH
         '''

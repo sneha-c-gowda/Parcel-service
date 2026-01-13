@@ -21,9 +21,8 @@ pipeline {
       stage ("deploy") {
       steps {
         sh '''
-       set -e
-      mvn clean install
-      timeout 300 mvn spring-boot:run || echo "Spring Boot stopped after 5 minutes"
+       mvn clean package
+       mvn spring-boot:run
         '''
       }
     }

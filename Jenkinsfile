@@ -22,7 +22,9 @@ pipeline {
       steps {
         sh '''
        mvn clean install
-       mvn spring-boot:run
+       cd /var/lib/jenkins/workspace/Parcel_service_pipeline/target
+       java -jar *.jar
+
         '''
       }
     }

@@ -22,11 +22,11 @@ pipeline {
       stage ("deploy") {
       steps {
         sh '''
-        sudo apt install -y openjdk-11-jdk
+        
         export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
         export PATH=$JAVA_HOME/bin:$PATH
         mvn clean install
-        nohup java -jar target/*.jar > app.log 2>&1 &
+        java -jar target/*.jar
         '''
       }
     }

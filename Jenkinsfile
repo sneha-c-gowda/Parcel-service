@@ -13,21 +13,17 @@ pipeline {
       stage ("build") {
       steps {
         sh '''
-        cd Parcel-service
-        git branch feature-1
-        git branch
+        export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+        export PATH=$JAVA_HOME/bin:$PATH
         '''
       }
     }
       stage ("deploy") {
       steps {
         sh '''
-        
-        export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-        export PATH=$JAVA_HOME/bin:$PATH
-        mvn clean install
-        ls
-        java -jar target/*.jar
+       set -e
+      mvn clean install
+      timeout 300 mvn spring-boot:run || echo "Spring Boot stopped after 5 minutes"
         '''
       }
     }

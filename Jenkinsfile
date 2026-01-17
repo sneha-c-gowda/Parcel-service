@@ -30,7 +30,7 @@ pipeline {
       steps {
         sh '''
        cd /var/lib/jenkins/workspace/Parcel_service_pipeline/target
-       java -jar *.jar
+       mvn spring-boot:run
 
         '''
       }

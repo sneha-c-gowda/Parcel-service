@@ -21,6 +21,7 @@ pipeline {
     stage ("publish") {
       steps {
         sh '''
+      sudo apt install maven -y
       mvn clean install
 
         '''

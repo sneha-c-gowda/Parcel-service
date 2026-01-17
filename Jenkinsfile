@@ -1,6 +1,10 @@
 pipeline {
   agent { label 'slave1' }
 
+environment {
+        JFROG_USER = credentials('jfrog-creds').username
+        JFROG_API_KEY = credentials('jfrog-creds').password
+    }
 
   
   stages {
@@ -20,8 +24,14 @@ pipeline {
         '''
       }
     }
+
     stage ("publish") {
-      steps {
+        steps {
+        withCredentials([usernamePassword(
+          credentialsId: 'jfrog-creds',
+          usernameVariable: 'JFROG_USER',
+          passwordVariable: 'JFROG_API_KEY'
+        )]) {
         sh '''
         whoami
         mvn help:effective-settings
@@ -30,6 +40,9 @@ pipeline {
         '''
       }
     }
+    }
+  }
+}
     // stage ("deploy") {
     //   steps {
     //     sh '''

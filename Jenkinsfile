@@ -21,9 +21,7 @@ pipeline {
       stage ("deploy") {
       steps {
         sh '''
-      mvn clean install
-       cd /var/lib/jenkins/workspace/Parcel_service_pipeline/target
-       java -jar *.jar
+      whoami
 
         '''
       }

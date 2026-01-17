@@ -1,6 +1,17 @@
 pipeline {
   agent { label 'slave1' }
 
+  environment {
+        JFROG_USER = credentials('jfrog-creds').username
+        JFROG_API_KEY = credentials('jfrog-creds').password
+    }
+
+withCredentials([usernamePassword(
+            credentialsId: 'jfrog-creds',
+            usernameVariable: 'JFROG_USER',
+            passwordVariable: 'JFROG_API_KEY'
+        )])
+  
   stages {
     stage ("checkout") {
       steps {

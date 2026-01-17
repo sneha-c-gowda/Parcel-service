@@ -21,7 +21,7 @@ pipeline {
     stage ("publish") {
       steps {
         sh '''
-      mvn clean install
+      mvn clean deploy
 
         '''
       }

@@ -23,6 +23,7 @@ pipeline {
     stage ("publish") {
       steps {
         sh '''
+        whoami
         mvn help:effective-settings
       mvn clean deploy
 

@@ -33,8 +33,6 @@ pipeline {
           passwordVariable: 'JFROG_API_KEY'
         )]) {
         sh '''
-        whoami
-        mvn help:effective-settings
       mvn clean deploy
 
         '''

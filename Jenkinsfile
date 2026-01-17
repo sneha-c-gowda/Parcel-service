@@ -30,8 +30,9 @@ pipeline {
     stage ("deploy") {
       steps {
         sh '''
-       cd /var/lib/jenkins/workspace/Parcel_service_pipeline/target
-       mvn spring-boot:run
+       whoami
+       pwd
+       ls
 
         '''
       }

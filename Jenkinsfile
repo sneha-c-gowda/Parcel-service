@@ -26,14 +26,14 @@ pipeline {
         '''
       }
     }
-    stage ("deploy") {
-      steps {
-        sh '''
-       mvn spring-boot:run
+    // stage ("deploy") {
+    //   steps {
+    //     sh '''
+    //    mvn spring-boot:run
 
-        '''
-      }
-    }
+    //     '''
+    //   }
+    // }
   }
 }
   

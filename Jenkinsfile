@@ -18,10 +18,19 @@ pipeline {
         '''
       }
     }
-      stage ("deploy") {
+    stage ("publish") {
       steps {
         sh '''
-      whoami
+      mvn clean install
+
+        '''
+      }
+    }
+    stage ("deploy") {
+      steps {
+        sh '''
+       cd /var/lib/jenkins/workspace/Parcel_service_pipeline/target
+       java -jar *.jar
 
         '''
       }

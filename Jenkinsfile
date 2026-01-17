@@ -26,12 +26,7 @@ pipeline {
     }
 
     stage ("publish") {
-        steps {
-        withCredentials([usernamePassword(
-          credentialsId: 'jfrog-creds',
-          usernameVariable: 'JFROG_USER',
-          passwordVariable: 'JFROG_API_KEY'
-        )]) {
+       steps{
         sh '''
       mvn clean deploy
 
@@ -40,7 +35,7 @@ pipeline {
     }
     }
   }
-}
+
     // stage ("deploy") {
     //   steps {
     //     sh '''

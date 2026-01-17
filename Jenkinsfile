@@ -30,9 +30,7 @@ pipeline {
     stage ("deploy") {
       steps {
         sh '''
-       whoami
-       pwd
-       ls
+       mvn spring-boot:run
 
         '''
       }
